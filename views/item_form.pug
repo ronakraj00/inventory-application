@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    form(method="POST",action="/collection/item/create")
+        label(for="name") Name 
+            input(id="name" name="name" type="text")
+        br
+        label(for="description") description 
+            input(id="description" name="description" type="text")
+        br
+        label(for="collection") Choose a Collection
+            select( id="collection" name="collection")
+                each collection in allCollections 
+                    option(value=collection.id)=collection.name
+        br
+        label(for="category") category 
+            input(id="category" name="category" type="text")
+        br
+        label(for="price") price 
+            input(id="price" name="price" type="number" min="0")
+        br
+        label(for="stock") stock 
+            input(id="stock" name="stock" type="number" min="0")
+        br
+        input(type="submit")
+            

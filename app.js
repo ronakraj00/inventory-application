@@ -3,11 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const mongoose=require("mongoose");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+mongoose.set("strictQuery",false);
+const dev_db_url =
+    "mongodb+srv://admin:ronakraj1@cluster0.bjksk03.mongodb.net/inventory?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+main().catch((err) => console.log(err));
+async function main() {
+    await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

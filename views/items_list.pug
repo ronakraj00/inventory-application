@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    div 
+        a(href="item/create") Create a New Item
+    h1=title
+    ul
+        each item in itemsOfCollection
+            li=item.name 
+            

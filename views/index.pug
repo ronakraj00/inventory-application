@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  ul
+    each collection in allCollections
+      li
+        a(href=collection.url)=collection.name 
+        p=collection.description
