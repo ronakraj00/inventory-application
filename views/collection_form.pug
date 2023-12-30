@@ -1,0 +1,16 @@
+extends layout 
+block content 
+    h1=title 
+    form(method="POST",action="")
+        label(for="name") Name 
+            br
+            input(id="name",type="text",name="name")
+        br
+        label(for="description") Description 
+            br
+            input(id="description" type="text",name="description")
+        br
+        input(type="submit")
+    if errors
+        each error in errors 
+            li(style="color:red")=error.msg

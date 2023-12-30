@@ -24,7 +24,6 @@ exports.post_item_create = [
     body("stock").optional({ values: "falsy" }),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
-        console.log(req.body.collection);
         const item = new Item({
             name: req.body.name,
             description: req.body.description,
@@ -36,12 +35,19 @@ exports.post_item_create = [
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
             res.render("item_form", {
-                title: "Create Item",
+                title: "Create new Item",
                 allCollections: allCollections,
+                errors: errors.array(),
             });
         } else {
             await item.save();
-            res.redirect("/collection");
+            res.redirect(`/collection/${req.body.collection}`);
         }
     }),
 ];
+
+exports.post_item_delete = asyncHandler(async (req, res, next) => {
+    const item = await Item.findById(req.params.id);
+    await Item.findByIdAndDelete(req.params.id);
+    res.redirect(`/collection/${item.collection}`);
+});

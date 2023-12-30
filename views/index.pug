@@ -2,9 +2,14 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  ul
-    each collection in allCollections
-      li
-        a(href=collection.url)=collection.name 
-        p=collection.description
+  a(href="collection/create") Create a new Collection
+  if allCollections.length==0
+    p Nothing Here
+  else 
+    ul(style="margin:0px;padding:0px",class="layout")
+      each collection in allCollections
+        li(style="max-width:400px;border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
+          a(href=collection.url,style="font-size:26px")=collection.name 
+          p=collection.description
+          p=collection.createdAt_formatted
+          a(href=`collection/delete/${collection._id}`) delete

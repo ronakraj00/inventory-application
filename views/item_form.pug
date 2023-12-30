@@ -1,26 +1,40 @@
 extends layout 
 
 block content 
+    h1=title
     form(method="POST",action="/collection/item/create")
         label(for="name") Name 
+            br
             input(id="name" name="name" type="text")
+
         br
         label(for="description") description 
+            br
             input(id="description" name="description" type="text")
+
         br
         label(for="collection") Choose a Collection
+            br
             select( id="collection" name="collection")
                 each collection in allCollections 
                     option(value=collection.id)=collection.name
         br
         label(for="category") category 
+            br
             input(id="category" name="category" type="text")
+
         br
         label(for="price") price 
+            br
             input(id="price" name="price" type="number" min="0")
+
         br
         label(for="stock") stock 
+            br
             input(id="stock" name="stock" type="number" min="0")
+
         br
         input(type="submit")
-            
+    if errors
+        each error in errors 
+            li(style="color:red")=error.msg

@@ -1,10 +1,18 @@
 extends layout 
 
 block content 
-    div 
-        a(href="item/create") Create a New Item
     h1=title
-    ul
-        each item in itemsOfCollection
-            li=item.name 
-            
+    a(href="item/create") Create a New Item
+    if itemsOfCollection.length === 0
+        p Nothing here
+    else
+        ul(style="margin:0px;padding:0px",class="layout")
+            each item in itemsOfCollection
+                li(style="max-width:400px;border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
+                    p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
+                    p #[strong Description:] #{item.description}
+                    p #[strong Category:] #{item.category}
+                    p #[strong Price:] #{item.price}
+                    p #[strong Stock:] #{item.stock}
+                    a(href=`/collection/item/delete/${item._id}`) delete
+    
