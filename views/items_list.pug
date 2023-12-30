@@ -12,10 +12,11 @@ block content
                     if item.img
                         div(class="item-img")
                             img(src=(item.img.slice(0,10)=="localimage") ? `/images/${item.img}` : item.img)
-                    p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
-                    p #[strong Description:] #{item.description}
-                    p #[strong Category:] #{item.category}
-                    p #[strong Price:] #{item.price}
-                    p #[strong Stock:] #{item.stock}
-                    a(href=`/collection/item/delete/${item._id}`) delete
+                    div
+                        p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
+                        p #[strong Description:] #{item.description}
+                        p #[strong Category:] #{item.category}
+                        p #[strong Price:] #{item.price}
+                        p #[strong Stock:] #{item.stock}
+                        a(href=`/collection/item/delete/${item._id}`) delete
     

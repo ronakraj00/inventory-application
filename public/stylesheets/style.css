@@ -70,17 +70,21 @@ select {
 
 .layout li {
     box-shadow: 3px 3px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 .layout li p {
     max-width: 25ch;
 }
 
-.item-img{
-    max-width: 300px;
-    max-height: 100px;
+.item-img {
+    max-width: 220px;
+    max-height: 220px;
     border-radius: 9px;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
