@@ -11,6 +11,7 @@ const ItemSchema = new Schema({
         type: String,
         maxLength: 500,
     },
+    img: { type: String },
     collection: {
         type: Schema.Types.ObjectId,
         ref: "Collection",

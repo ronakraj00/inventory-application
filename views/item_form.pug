@@ -2,7 +2,7 @@ extends layout
 
 block content 
     h1=title
-    form(method="POST",action="/collection/item/create")
+    form(method="POST",action="/collection/item/create",enctype="multipart/form-data")
         label(for="name") Name 
             br
             input(id="name" name="name" type="text")
@@ -33,6 +33,15 @@ block content
             br
             input(id="stock" name="stock" type="number" min="0")
 
+        br
+        label(for="img") Choose a Image File 
+            br
+            input(type="file" id="img" name="img" value="")
+        br
+        p(style="margin:0px;padding:0px;font-weight:700") OR
+        label(for="img-url") Enter A URL of image
+            br
+            input(type="url" id="img-url" name="imgUrl" value="")
         br
         input(type="submit")
     if errors

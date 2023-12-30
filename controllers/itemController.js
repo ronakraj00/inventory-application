@@ -2,6 +2,17 @@ const asyncHandler = require("express-async-handler");
 const collection = require("../models/collection");
 const { body, validationResult } = require("express-validator");
 const Item = require("../models/item");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/images/");
+    },
+    filename: function (req, file, cb) {
+        cb(null, "localimage" + Date.now() + "-" + file.originalname);
+    },
+});
+const upload = multer({ storage:storage});
 
 exports.item_list = asyncHandler(async (req, res, next) => {});
 exports.get_item_create = asyncHandler(async (req, res, next) => {
@@ -12,6 +23,7 @@ exports.get_item_create = asyncHandler(async (req, res, next) => {
     });
 });
 exports.post_item_create = [
+    upload.single("img"),
     body("name")
         .trim()
         .isLength({ min: 1 })
@@ -31,6 +43,7 @@ exports.post_item_create = [
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
+            img: req.file ? req.file.filename:req.body.imgUrl,
         });
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
