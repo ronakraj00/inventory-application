@@ -14,9 +14,13 @@ block content
                             img(src=(item.img.slice(0,10)=="localimage") ? `/images/${item.img}` : item.img)
                     div(class="not-center")
                         p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
-                        p(class="description") #[strong Description:] #{item.description}
-                        p #[strong Category:] #{item.category}
-                        p #[strong Price:] #{item.price}
-                        p #[strong Stock:] #{item.stock}
+                        if item.description 
+                            p(class="description") #[strong Description:] #{item.description}
+                        if !item.category.join()==""
+                            p #[strong Category:] #{item.category}
+                        if item.price
+                            p #[strong Price:] #{item.price}
+                        if item.stock
+                            p #[strong Stock:] #{item.stock}
                         a(href=`/collection/item/delete/${item._id}`,class="delete") delete
     
