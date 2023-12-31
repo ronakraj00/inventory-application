@@ -8,9 +8,9 @@ block content
   else 
     ul(style="margin:0px;padding:0px",class="layout not-center")
       each collection in allCollections
-        li(style="border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
+        li(style="list-style:none;margin-top:20px")
           div
             a(href=collection.url,style="font-size:26px")=collection.name 
             p=collection.description
             p=collection.createdAt_formatted
-            a(href=`collection/delete/${collection._id}`) delete
+            a(href=`collection/delete/${collection._id}`,class="delete") delete

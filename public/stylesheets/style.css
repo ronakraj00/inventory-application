@@ -2,20 +2,28 @@ body {
     margin: 0px;
     padding: 30px;
     font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-    border: 2px solid black;
     border-bottom: none;
     word-break: break-word;
     background-color: #00b7ff3b;
 }
 
 a {
-    color: blue;
+    background: rgba(0, 0, 255, 0.605);
+    color: white;
     text-transform: capitalize;
     text-decoration: none;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border: 2px solid black;
     border-radius: 3px;
     padding: 4px;
+    box-shadow: 2px 2px black;
+}
+
+a.delete{
+    background-color: rgba(255, 0, 0, 0.763);
+    color: white;
+    text-align: right;
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
 }
 
 a:active{
@@ -48,17 +56,27 @@ input {
 }
 
 input[type="submit"] {
+    font-size: larger;
+    margin-top: 10px;
     margin-bottom: 5px;
     text-align: center;
-    width: max-content;
-    height: 30px;
+    width: 100px;
+    height: 40px;
     border: 2px solid black;
     border-radius: 5px;
+    color: white;
+    background: green;
+    box-shadow: 2px 2px black;
 }
 
-input:focus,
+input[type="submit"]:active {
+    box-shadow: none;
+
+}
+
+input:focus:not(input[type="submit"]),
 select:focus {
-    border: 2px dashed blueviolet;
+    box-shadow: 2px 2px black;
     outline: none;
 }
 
@@ -79,7 +97,8 @@ select {
 }
 
 .layout li {
-    box-shadow: 3px 3px;
+    padding: 14px;
+    border-left:5px solid green ;
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -87,6 +106,7 @@ select {
     flex-wrap: wrap;
     max-width: 25ch;
 }
+
 
 .layout li p {
     text-overflow: ellipsis;
