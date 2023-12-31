@@ -66,6 +66,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-items: flex-start;
 }
 
 .layout li {
@@ -74,17 +75,37 @@ select {
     gap: 10px;
     justify-content: center;
     align-items: center;
-}
-.layout li p {
+    flex-wrap: wrap;
     max-width: 25ch;
 }
 
+.layout li p {
+    text-overflow: ellipsis;
+}
+
 .item-img {
-    max-width: 220px;
-    max-height: 220px;
     border-radius: 9px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.item-img img {
+    width: 200px;
+    resize: both;
+    border-radius: 9px;
+}
+
+.not-center {
+    justify-content: start;
+    text-align: left;
+}
+
+.layout li p {
+    max-width: 25ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

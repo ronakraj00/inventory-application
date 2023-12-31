@@ -6,9 +6,9 @@ block content
   if allCollections.length==0
     p Nothing Here
   else 
-    ul(style="margin:0px;padding:0px",class="layout")
+    ul(style="margin:0px;padding:0px",class="layout not-center")
       each collection in allCollections
-        li(style="max-width:400px;border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
+        li(style="border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
           div
             a(href=collection.url,style="font-size:26px")=collection.name 
             p=collection.description

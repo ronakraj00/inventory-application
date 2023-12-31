@@ -8,13 +8,13 @@ block content
     else
         ul(style="margin:0px;padding:0px",class="layout")
             each item in itemsOfCollection
-                li(style="max-width:400px;border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
+                li(style="border-radius: 4px;list-style:none;border:2px solid black;padding:8px;margin-top:20px")
                     if item.img
                         div(class="item-img")
                             img(src=(item.img.slice(0,10)=="localimage") ? `/images/${item.img}` : item.img)
-                    div
+                    div(class="not-center")
                         p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
-                        p #[strong Description:] #{item.description}
+                        p(class="description") #[strong Description:] #{item.description}
                         p #[strong Category:] #{item.category}
                         p #[strong Price:] #{item.price}
                         p #[strong Stock:] #{item.stock}
