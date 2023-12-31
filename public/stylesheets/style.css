@@ -12,6 +12,15 @@ a {
     color: blue;
     text-transform: capitalize;
     text-decoration: none;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+a:active{
+    background-color: red;
+    color: white;
 }
 
 h1 {
@@ -95,6 +104,7 @@ select {
     width: 200px;
     resize: both;
     border-radius: 9px;
+    border: 2px solid black;
 }
 
 .not-center {
