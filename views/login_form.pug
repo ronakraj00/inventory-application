@@ -1,0 +1,16 @@
+extends layout 
+block content 
+    h1=title 
+    form(method="POST",action="")
+        label(for="email") Email
+            br
+            input(type="email",id="email",value="",placeholder="abc@gmail.com",name="email" required)
+        br
+        label(for="password") Password
+            br
+            input(type="password",id="password",value="",placeholder="Password",name="password" required )
+        br
+        input(type="submit")
+    if errors 
+        each error in errors 
+            li=error.msg

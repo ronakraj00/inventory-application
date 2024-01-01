@@ -16,7 +16,11 @@ const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
 async function main() {
-    await mongoose.connect(mongoDB);
+    await mongoose.connect(mongoDB,{
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    family: 4,
+});
 }
 
 // view engine setup
