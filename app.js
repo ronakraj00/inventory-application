@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(
     session({
-        secret: process.env.secret,
+        secret: "catmouse",
         resave: false,
         saveUninitialized: true,
     })
