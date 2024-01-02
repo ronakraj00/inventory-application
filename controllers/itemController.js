@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
         cb(null, "localimage" + Date.now() + "-" + file.originalname);
     },
 });
-const upload = multer({ storage:storage});
+const upload = multer({ storage: storage });
 
 exports.item_list = asyncHandler(async (req, res, next) => {});
 exports.get_item_create = asyncHandler(async (req, res, next) => {
@@ -43,7 +43,7 @@ exports.post_item_create = [
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
-            img: req.file ? req.file.filename:req.body.imgUrl,
+            img: req.file ? req.file.filename : req.body.imgUrl,
         });
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
@@ -63,4 +63,23 @@ exports.post_item_delete = asyncHandler(async (req, res, next) => {
     const item = await Item.findById(req.params.id);
     await Item.findByIdAndDelete(req.params.id);
     res.redirect(`/collection/${item.collection}`);
+});
+
+
+
+exports.get_item_update = asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const allCollections = await collection.find().sort({ name: 1 });
+    const item = await Item.findById(id);
+    if (item) {
+        const clonedItem = item;
+        await Item.findByIdAndDelete(item.id);
+        res.render("item_form", {
+            title: "Create Item",
+            allCollections: allCollections,
+            item: clonedItem,
+        });
+    } else {
+        res.render("/");
+    }
 });

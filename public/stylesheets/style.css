@@ -163,3 +163,8 @@ header a:first-child{
 .logout{
     font-size: small;
 }
+
+.delete-update{
+    display: flex;
+    justify-content: space-between;
+}
