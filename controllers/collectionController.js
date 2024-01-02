@@ -58,9 +58,19 @@ exports.post_collection_create = [
     }),
 ];
 
-exports.post_collection_delete = asyncHandler(async (req, res, next) => {
-    const allItems = await Items.find({ collection: req.params.id });
-    allItems.forEach(async (item) => await Items.findByIdAndDelete(item._id));
-    await Collection.findByIdAndDelete(req.params.id);
-    res.redirect("/");
-});
+exports.post_collection_delete = [
+    (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect("/login");
+    },
+    asyncHandler(async (req, res, next) => {
+        const allItems = await Items.find({ collection: req.params.id });
+        allItems.forEach(
+            async (item) => await Items.findByIdAndDelete(item._id)
+        );
+        await Collection.findByIdAndDelete(req.params.id);
+        res.redirect("/");
+    }),
+];

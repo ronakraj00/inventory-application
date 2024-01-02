@@ -18,7 +18,7 @@ a {
     box-shadow: 2px 2px black;
 }
 
-a.delete{
+a.delete {
     background-color: rgba(255, 0, 0, 0.763);
     color: white;
     text-align: right;
@@ -26,7 +26,7 @@ a.delete{
     box-shadow: 2px 2px black;
 }
 
-a:active{
+a:active {
     background-color: red;
     color: white;
 }
@@ -71,7 +71,6 @@ input[type="submit"] {
 
 input[type="submit"]:active {
     box-shadow: none;
-
 }
 
 input:focus:not(input[type="submit"]),
@@ -98,7 +97,7 @@ select {
 
 .layout li {
     padding: 14px;
-    border-left:5px solid green ;
+    border-left: 5px solid green;
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -106,7 +105,6 @@ select {
     flex-wrap: wrap;
     max-width: 25ch;
 }
-
 
 .layout li p {
     text-overflow: ellipsis;
@@ -140,9 +138,10 @@ select {
     overflow: hidden;
 }
 
-.user-welcome{
+.user-welcome {
     font-size: larger;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
     font-weight: 400;
     text-transform: uppercase;
     display: flex;
@@ -150,21 +149,29 @@ select {
     gap: 15px;
 }
 
-header{
+header {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-header a:first-child{
+header a:first-child {
     margin-right: auto;
 }
 
-.logout{
+.logout {
     font-size: small;
 }
 
-.delete-update{
+.delete-update {
     display: flex;
     justify-content: space-between;
+}
+
+.errors {
+    list-style: none;
+    color: red;
+    margin-top: 10px;
+    box-shadow: -2px 0px;
+    padding-left: 8px;
 }

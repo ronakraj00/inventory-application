@@ -59,27 +59,41 @@ exports.post_item_create = [
     }),
 ];
 
-exports.post_item_delete = asyncHandler(async (req, res, next) => {
-    const item = await Item.findById(req.params.id);
-    await Item.findByIdAndDelete(req.params.id);
-    res.redirect(`/collection/${item.collection}`);
-});
+exports.post_item_delete = [
+    (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect("/login");
+    },
+    asyncHandler(async (req, res, next) => {
+        const item = await Item.findById(req.params.id);
+        await Item.findByIdAndDelete(req.params.id);
+        res.redirect(`/collection/${item.collection}`);
+    }),
+];
 
-
-
-exports.get_item_update = asyncHandler(async (req, res, next) => {
-    const id = req.params.id;
-    const allCollections = await collection.find().sort({ name: 1 });
-    const item = await Item.findById(id);
-    if (item) {
-        const clonedItem = item;
-        await Item.findByIdAndDelete(item.id);
-        res.render("item_form", {
-            title: "Create Item",
-            allCollections: allCollections,
-            item: clonedItem,
-        });
-    } else {
-        res.render("/");
-    }
-});
+exports.get_item_update = [
+    (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+        res.redirect("/login");
+    },
+    asyncHandler(async (req, res, next) => {
+        const id = req.params.id;
+        const allCollections = await collection.find().sort({ name: 1 });
+        const item = await Item.findById(id);
+        if (item) {
+            const clonedItem = item;
+            await Item.findByIdAndDelete(item.id);
+            res.render("item_form", {
+                title: "Create Item",
+                allCollections: allCollections,
+                item: clonedItem,
+            });
+        } else {
+            res.render("/");
+        }
+    }),
+];
