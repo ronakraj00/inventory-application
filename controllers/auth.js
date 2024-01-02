@@ -2,9 +2,12 @@ const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-
+const passport = require("passport");
 exports.get_log_in = asyncHandler((req, res, next) => {
-    res.render("login_form", { title: "Log In Form" });
+    const msg = req.flash("error")[0];
+    const errors = [];
+    errors[0] = { msg: msg };
+    res.render("login_form", { title: "Log In Form", errors: errors });
 });
 
 exports.post_log_in = [
@@ -12,7 +15,7 @@ exports.post_log_in = [
         .trim()
         .escape()
         .custom(async (value) => {
-            const user = User.findOne({ email: value });
+            const user = await User.findOne({ email: value }).exec();
             if (user) {
                 return true;
             } else {
@@ -20,7 +23,22 @@ exports.post_log_in = [
             }
         }),
     body("password").trim().escape(),
-    asyncHandler(async (req, res, next) => {}),
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+        if (errors.isEmpty()) {
+            next();
+        } else {
+            res.render("login_form", {
+                title: "Log In",
+                errors: errors.array(),
+            });
+        }
+    }),
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/login",
+        failureFlash: true,
+    }),
 ];
 
 exports.get_sign_up = asyncHandler(async (req, res, next) => {
@@ -75,3 +93,8 @@ exports.post_sign_up = [
         });
     }),
 ];
+
+exports.delete_logout = asyncHandler(async (req, res, next) => {
+    req.logout();
+    res.redirect("/");
+});

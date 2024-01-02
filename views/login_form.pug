@@ -1,6 +1,7 @@
 extends layout 
 block content 
     h1=title 
+    
     form(method="POST",action="")
         label(for="email") Email
             br
@@ -13,4 +14,6 @@ block content
         input(type="submit")
     if errors 
         each error in errors 
-            li=error.msg
+            li(class="errors")=error.msg
+    a(href="/login",style="margin-bottom:10px;padding-bottom:8px") Sign Up
+    

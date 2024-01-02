@@ -7,5 +7,9 @@ html
   body
     header 
       a(href="/",style="margin-bottom:10px;padding-bottom:8px") Home
-      a(href="/sign-up",style="margin-bottom:10px;padding-bottom:8px") Sign Up
+      if user
+        p(class="user-welcome")="Welcome " + user.name
+          a(href="/logout",style="margin-bottom:10px;padding-bottom:8px",class="logout") Log Out
+      else 
+        a(href="/login",style="margin-bottom:10px;padding-bottom:8px") Log In
     block content

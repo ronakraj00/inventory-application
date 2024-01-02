@@ -13,4 +13,5 @@ block content
             a(href=collection.url,style="font-size:26px")=collection.name 
             p=collection.description
             p=collection.createdAt_formatted
-            a(href=`collection/delete/${collection._id}`,class="delete") delete
+            if(user)
+              a(href=`collection/delete/${collection._id}`,class="delete") delete
