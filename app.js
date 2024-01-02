@@ -29,14 +29,12 @@ app.use(passport.session());
 app.use(flash());
 const authUser = async (email, password, done) => {
     try {
-        console.log("here authuser");
         const user = await User.findOne({ email: email });
         if (user) {
             bcrypt.compare(password, user.password, function (err, result) {
                 if (result) {
                     return done(null, user);
                 } else {
-                    console.log("incorrect password");
                     return done(null, false, { message: "Incorrect Password" });
                 }
             });
@@ -74,6 +72,7 @@ async function main() {
         useUnifiedTopology: true,
         family: 4,
     });
+    console.log("connected");
 }
 
 app.use((req, res, next) => {
