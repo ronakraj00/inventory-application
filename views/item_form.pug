@@ -2,46 +2,46 @@ extends layout
 
 block content 
     h1=title
-    form(method="POST",action="/collection/item/create",enctype="multipart/form-data")
+    form(method="POST",action="",enctype="multipart/form-data")
         label(for="name") Name 
             br
-            input(id="name" name="name" type="text" value=item.name)
+            input(id="name" name="name" type="text" value= item && item.name)
 
         br
         label(for="description") description 
             br
-            input(id="description" name="description" type="text" value=item.description)
+            input(id="description" name="description" type="text" value=item && item.description)
 
         br
         label(for="collection") Choose a Collection
             br
-            select( id="collection" name="collection")
+            select( id="collection" name="collection" )
                 each collection in allCollections 
                     option(value=collection.id)=collection.name
         br
         label(for="category") category 
             br
-            input(id="category" name="category" type="text" value=item.category.join(""))
+            input(id="category" name="category" type="text" value= item && item.category.join(""))
 
         br
         label(for="price") price 
             br
-            input(id="price" name="price" type="number" min="0" value=item.price)
+            input(id="price" name="price" type="number" min="0" value=item && item.price)
 
         br
         label(for="stock") stock 
             br
-            input(id="stock" name="stock" type="number" min="0" value=item.stock)
+            input(id="stock" name="stock" type="number" min="0" value=item && item.stock)
 
         br
         label(for="img") Choose a Image File 
             br
-            input(type="file" id="img" name="img" value=item.img)
+            input(type="file" id="img" name="img" value=item && item.img)
         br
         p(style="margin:0px;padding:0px;font-weight:700") OR
         label(for="img-url") Enter A URL of image
             br
-            input(type="url" id="img-url" name="imgUrl" value=item.img)
+            input(type="url" id="img-url" name="imgUrl" value=item && item.img)
         br
         input(type="submit")
     if errors
