@@ -11,7 +11,7 @@ block content
                 li(style="list-style:none;margin-top:20px")
                     if item.img
                         div(class="item-img")
-                            img(src=(item.img.slice(0,10)=="localimage") ? `/images/${item.img}` : item.img)
+                            img(src=(item.img.slice(0,10)=="localimage") ? `public/images/${item.img}` : item.img)
                     div(class="not-center")
                         p(style="background-color:skyblue;color:black;padding:4px") #[strong Name:] #{item.name}
                         if item.description 
