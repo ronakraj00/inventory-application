@@ -83,7 +83,7 @@ exports.post_sign_up = [
             });
             if (errors.isEmpty()) {
                 await user.save();
-                res.redirect("/");
+                res.redirect("/login");
             } else {
                 res.render("sign_up_form", {
                     title: "Sign Up form",
