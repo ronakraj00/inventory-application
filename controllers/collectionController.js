@@ -38,7 +38,7 @@ exports.post_collection_create = [
         .escape()
         .withMessage("name should be atleast one character long")
         .escape(),
-    body("description").optional({ values: "falsy" }).trim(),
+    body("description").optional({ values: "falsy" }).trim().escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
