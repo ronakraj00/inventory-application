@@ -70,9 +70,8 @@ input[type="submit"] {
     box-shadow: 2px 2px black;
 }
 
-.create{
+a.create{
     background-color: green;
-
 }
 
 input[type="submit"]:active {
@@ -116,9 +115,8 @@ select {
 
 .collections{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
 }
 
 .layout li{
