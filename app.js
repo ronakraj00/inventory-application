@@ -20,7 +20,12 @@ app.use(
     session({
         secret: "catmouse",
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 604800000,
+            expires: new Date(Date.now() + 604800000),
+            httpOnly: true,
+        },
     })
 );
 
@@ -78,7 +83,7 @@ async function main() {
 app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
-  });
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
