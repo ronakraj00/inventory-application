@@ -1,8 +1,8 @@
 extends layout 
 
 block content 
-    h1=title
-    a(href="item/create") Create a New Item
+    h1="Browse "+title
+    a(href="item/create" class="create") Create a New Item
     if itemsOfCollection.length === 0
         p Nothing here
     else
