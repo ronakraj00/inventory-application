@@ -2,6 +2,7 @@
     "name": "inventory",
     "short_name": "inventory",
     "display": "standalone",
+    "start_url":"/",
     "background_color": "#fdfdfd",
     "theme_color": "#80bcbd",
     "orientation": "portrait-primary",
