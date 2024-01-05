@@ -1,7 +1,6 @@
 {
     "name": "inventory",
     "short_name": "inventory",
-    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#fdfdfd",
     "theme_color": "#80bcbd",
