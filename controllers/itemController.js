@@ -4,12 +4,16 @@ const { body, validationResult } = require("express-validator");
 const Item = require("../models/item");
 const multer = require("multer");
 
+const fs = require("fs");
+
+const filePath = "public/images/localimage.jpg";
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/images/");
     },
     filename: function (req, file, cb) {
-        cb(null, "localimage" + Date.now() + "-" + file.originalname);
+        cb(null, "localimage.jpg");
     },
 });
 const upload = multer({ storage: storage });
@@ -43,7 +47,7 @@ exports.post_item_create = [
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
-            img: req.file ? req.file.filename : req.body.imgUrl,
+            img: req.file ? fs.readFileSync(filePath) : req.body.imgUrl,
         });
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
@@ -54,6 +58,7 @@ exports.post_item_create = [
             });
         } else {
             await item.save();
+            fs.unlinkSync(filePath);
             res.redirect(`/collection/${req.body.collection}`);
         }
     }),
@@ -117,14 +122,14 @@ exports.post_item_update = [
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         const item = new Item({
-            _id:req.params.id,
+            _id: req.params.id,
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
-            img: req.file ? req.file.filename : req.body.imgUrl,
+            img:fs.readFileSync(filePath),
         });
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
@@ -135,6 +140,7 @@ exports.post_item_update = [
             });
         } else {
             await Item.findByIdAndUpdate(req.params.id, item, {});
+            fs.unlinkSync(filePath)
             res.redirect(`/collection/${req.body.collection}`);
         }
     }),
