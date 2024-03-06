@@ -20,8 +20,15 @@ html
     block content
     script(type="text/javascript").
       const all_links=document.querySelectorAll("a")
+      const all_buttons=document.querySelectorAll("input[type='submit']")
       const home=document.querySelector("#home")
       all_links.forEach(link=>{
+        link.addEventListener("click",()=>{
+          home.innerText=""
+          home.classList.add("loader")
+        })
+      })
+      all_buttons.forEach(link=>{
         link.addEventListener("click",()=>{
           home.innerText=""
           home.classList.add("loader")
