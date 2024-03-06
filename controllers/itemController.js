@@ -47,8 +47,10 @@ exports.post_item_create = [
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
-            img: req.file ? fs.readFileSync(filePath) : req.body.imgUrl,
         });
+        if (req.file) {
+            item.img = fs.readFileSync(filePath);
+        }
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
             res.render("item_form", {
@@ -58,7 +60,9 @@ exports.post_item_create = [
             });
         } else {
             await item.save();
-            fs.unlinkSync(filePath);
+            if (req.file) {
+                fs.unlinkSync(filePath);
+            }
             res.redirect(`/collection/${req.body.collection}`);
         }
     }),
@@ -129,8 +133,10 @@ exports.post_item_update = [
             collection: req.body.collection,
             price: req.body.price,
             stock: req.body.stock,
-            img:fs.readFileSync(filePath),
         });
+        if (req.file) {
+            item.img = fs.readFileSync(filePath);
+        }
         if (!errors.isEmpty()) {
             const allCollections = await collection.find().sort({ name: 1 });
             res.render("item_form", {
@@ -140,7 +146,9 @@ exports.post_item_update = [
             });
         } else {
             await Item.findByIdAndUpdate(req.params.id, item, {});
-            fs.unlinkSync(filePath)
+            if (req.file) {
+                fs.unlinkSync(filePath);
+            }
             res.redirect(`/collection/${req.body.collection}`);
         }
     }),
