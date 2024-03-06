@@ -17,7 +17,12 @@ block content
             br
             select( id="collection" name="collection" )
                 each collection in allCollections 
-                    option(value=collection.id)=collection.name
+                    if collection.id==item.collection 
+                        option(value=collection.id selected="selected")=collection.name
+                    else
+                        option(value=collection.id )=collection.name
+                    
+                    
         br
         label(for="category") category 
             br
