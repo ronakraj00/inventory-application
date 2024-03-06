@@ -4,7 +4,10 @@ block content
     h1="Browse "+title
     a(href="item/create" class="create") Create a New Item
     if itemsOfCollection.length === 0
-        p Nothing here
+        br
+        br
+        br
+        p(style="margin-top:50px;") Nothing here
     else
         ul(style="margin:0px;padding:0px",class="layout")
             each item in itemsOfCollection
