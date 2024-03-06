@@ -38,11 +38,11 @@ block content
             br
             input(type="file" id="img" name="img" accept="image/*" value=item && item.img)
         br
-        p(style="margin:0px;padding:0px;font-weight:700") OR
-        label(for="img-url") Enter A URL of image
-            br
-            input(type="text" id="img-url" name="imgUrl" value=item && item.img)
-        br
+        //- p(style="margin:0px;padding:0px;font-weight:700") OR
+        //- label(for="img-url") Enter A URL of image
+        //-     br
+        //-     input(type="text" id="img-url" name="imgUrl" value=item && item.img)
+        //- br
         input(type="submit")
     if errors
         each error in errors 
