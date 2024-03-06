@@ -44,7 +44,7 @@ a:focus-visible {
 }
 
 a.delete {
-    background-color: rgba(255, 0, 0, 0.763);
+    background-color: black;
     color: white;
 }
 
@@ -117,7 +117,8 @@ select {
 .layout {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    row-gap: 30px;
+    column-gap: 85px;
 }
 
 .collections li div {
@@ -167,14 +168,13 @@ p strong{
 
 .item-img {
     border-radius: 9px;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .item-img img {
-    width: 200px;
+    width: 250px;
     resize: both;
     border-radius: 9px;
     border: 2px solid black;
