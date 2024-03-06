@@ -5,7 +5,7 @@ const ItemSchema = new Schema({
     name: {
         type: String,
         required: true,
-        maxLength: 100,
+        maxLength: 30,
     },
     description: {
         type: String,

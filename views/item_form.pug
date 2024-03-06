@@ -5,7 +5,7 @@ block content
     form(method="POST",action="",enctype="multipart/form-data")
         label(for="name") Name 
             br
-            input(id="name" name="name" type="text" value= item && item.name)
+            input(id="name" name="name" type="text" maxlength=30 minlength=1 value= item && item.name)
 
         br
         label(for="img") Choose a Image File 
@@ -14,7 +14,7 @@ block content
         br
         label(for="description") description 
             br
-            input(id="description" name="description" type="text" value=item && item.description)
+            input(id="description" name="description" maxlength=500 type="text" value=item && item.description)
 
         br
         label(for="collection") Choose a Collection

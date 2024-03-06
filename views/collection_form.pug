@@ -4,11 +4,11 @@ block content
     form(method="POST",action="")
         label(for="name") Name 
             br
-            input(id="name",type="text",name="name")
+            input(id="name",type="text",name="name" maxlength=100 minlength=1)
         br
         label(for="description") Description 
             br
-            input(id="description" type="text",name="description")
+            input(id="description" type="text",name="description" maxlength=500)
         br
         input(type="submit")
     if errors
