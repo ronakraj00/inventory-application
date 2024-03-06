@@ -8,6 +8,10 @@ block content
             input(id="name" name="name" type="text" value= item && item.name)
 
         br
+        label(for="img") Choose a Image File 
+            br
+            input(type="file" id="img" name="img" accept="image/*" value=item && item.img)
+        br
         label(for="description") description 
             br
             input(id="description" name="description" type="text" value=item && item.description)
@@ -42,10 +46,7 @@ block content
             input(id="stock" name="stock" type="number" min="0" value=item && item.stock)
 
         br
-        label(for="img") Choose a Image File 
-            br
-            input(type="file" id="img" name="img" accept="image/*" value=item && item.img)
-        br
+        
         //- p(style="margin:0px;padding:0px;font-weight:700") OR
         //- label(for="img-url") Enter A URL of image
         //-     br
@@ -87,6 +88,8 @@ block content
             // Get the files
             const { files } = e.target;
 
+
+
             // No files selected
             if (!files.length) return;
 
@@ -96,6 +99,14 @@ block content
             // For every file in the files list
             for (const file of files) {
                 // We don't have to compress files that aren't images
+                if(file.size>2097152*2){
+                    alert("Image size is too big")
+                    console.log("Before clearing:", e.target.files);
+                    e.target.value="";
+                    return
+                    console.log("After clearing:", e.target.files);
+                }
+
                 if (!file.type.startsWith('image')) {
                     // Ignore this file, but do add it to our result
                     dataTransfer.items.add(file);
@@ -104,7 +115,7 @@ block content
 
                 // We compress the file by 50%
                 const compressedFile = await compressImage(file, {
-                    quality: 0.5,
+                    quality: 0.2,
                     type: 'image/webp',
                 });
 
