@@ -201,6 +201,7 @@ p strong{
 }
 
 .item-img {
+    width: 100%;
     border-radius: 9px;
     display: flex;
     justify-content: center;
@@ -237,8 +238,8 @@ p strong{
 .item-img img {
     filter: brightness(0.9);
     object-fit: cover;
-    min-width: 250px;
-    max-width: 350px;
+    min-width: 98%;
+    max-width: 98%;
     max-height: 400px;
     resize: both;
     border-radius: 9px;
