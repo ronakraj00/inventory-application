@@ -16,22 +16,24 @@ body {
     font-weight: bold;
     font-family: monospace;
     /* font-size: ; */
-    background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
+    background: linear-gradient(90deg, #000 50%, #0000 0) right/200% 100%;
     animation: l21 2s infinite linear;
-  }
-  .loader::before {
-    content :"Loading...";
+}
+.loader::before {
+    content: "Loading...";
     color: #0000;
     padding: 0 5px;
     background: inherit;
-    background-image: linear-gradient(90deg,#fff 50%,#000 0);
-    -webkit-background-clip:text;
-            background-clip:text;
-  }
-  
-  @keyframes l21{
-    100%{background-position: left}
-  }
+    background-image: linear-gradient(90deg, #fff 50%, #000 0);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes l21 {
+    100% {
+        background-position: left;
+    }
+}
 
 a {
     background-color: #ffffff;
@@ -178,7 +180,7 @@ select {
     /* max-width: 25ch; */
 }
 
-.title{
+.title {
     color: white;
     background-color: rgba(0, 0, 0, 0.658);
     padding: 4px;
@@ -196,7 +198,7 @@ p {
     font-size: 1rem;
 }
 
-p strong{
+p strong {
     color: rgba(70, 70, 70, 0.804);
     font-size: 0.9rem;
 }
@@ -209,30 +211,31 @@ p strong{
     align-items: center;
 }
 
-.card{
+.card {
     background: rgba(128, 128, 128, 0.237);
     border-radius: 16px;
-    transform: translate(-59%,0);
+    transform: translate(-59%, 0);
     opacity: 0.5;
+    max-width: 50ch;
 }
 
-.active{
-    animation: cardAnime 400ms ease-in-out 1 forwards ;
+.active {
+    animation: cardAnime 400ms ease-in-out 1 forwards;
 }
-.inactive{
-    animation: cardAnimeReverse 400ms ease-in-out 1 forwards ;
+.inactive {
+    animation: cardAnimeReverse 400ms ease-in-out 1 forwards;
 }
 
 @keyframes cardAnimeReverse {
-    100%{
+    100% {
         opacity: 0.5;
-        transform: translate(-59%,0px);
+        transform: translate(-59%, 0px);
     }
 }
 @keyframes cardAnime {
-    100%{
+    100% {
         opacity: 1;
-        transform: translate(0px,0px);
+        transform: translate(0px, 0px);
     }
 }
 
