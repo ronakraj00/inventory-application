@@ -141,7 +141,7 @@ select {
     display: flex;
     flex-wrap: wrap;
     row-gap: 30px;
-    column-gap: 85px;
+    column-gap: 15px;
 }
 
 .collections li div {
@@ -207,6 +207,19 @@ p strong{
 .card{
     background: rgba(128, 128, 128, 0.237);
     border-radius: 16px;
+    transform: translate(-99%,50px);
+    opacity: 0.5;
+}
+
+.active{
+    animation: cardAnime 400ms ease-in-out 1 forwards ;
+}
+
+@keyframes cardAnime {
+    100%{
+        opacity: 1;
+        transform: translate(0px,0px);
+    }
 }
 
 .item-img img {
