@@ -34,3 +34,9 @@ html
           home.classList.add("loader")
         })
       })
+      window.addEventListener('popstate', function(event){
+             if(event.state){
+                home.classList.remove("loader")
+                console.log("back")
+             }
+        });
