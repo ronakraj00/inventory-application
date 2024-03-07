@@ -210,14 +210,23 @@ p strong{
 .card{
     background: rgba(128, 128, 128, 0.237);
     border-radius: 16px;
-    transform: translate(-99%,50px);
+    transform: translate(-59%,0);
     opacity: 0.5;
 }
 
 .active{
     animation: cardAnime 400ms ease-in-out 1 forwards ;
 }
+.inactive{
+    animation: cardAnimeReverse 400ms ease-in-out 1 forwards ;
+}
 
+@keyframes cardAnimeReverse {
+    100%{
+        opacity: 0.5;
+        transform: translate(-59%,0px);
+    }
+}
 @keyframes cardAnime {
     100%{
         opacity: 1;
