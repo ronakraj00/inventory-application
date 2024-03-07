@@ -12,7 +12,7 @@ html
     header 
       a(id="home" href="/",style="margin-bottom:10px;padding-bottom:8px") Home
       if user
-        p(class="user-welcome")="Welcome " + user.name
+        p(class="user-welcome")=user.name
         a(href="/logout",style="margin-bottom:10px;padding-bottom:8px",class="logout") Log Out
       else
         a(href="/sign-up",style="margin:10px 10px;padding-bottom:8px") Sign Up

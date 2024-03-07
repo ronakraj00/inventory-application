@@ -167,12 +167,20 @@ select {
 
 .layout li {
     padding: 14px;
-    border-left: 5px solid rgba(128, 128, 128, 0.441);
-    border-radius: 3px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
     flex-wrap: wrap;
-    max-width: 25ch;
+    align-items: start;
+    /* max-width: 25ch; */
+}
+
+.title{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.658);
+    padding: 4px;
+    border-radius: 6px;
+    width: max-content;
 }
 
 .layout li p {
@@ -196,8 +204,17 @@ p strong{
     align-items: center;
 }
 
+.card{
+    background: rgba(128, 128, 128, 0.237);
+    border-radius: 16px;
+}
+
 .item-img img {
-    width: 250px;
+    filter: brightness(0.9);
+    object-fit: cover;
+    min-width: 250px;
+    max-width: 350px;
+    max-height: 400px;
     resize: both;
     border-radius: 9px;
     border: 2px solid black;
@@ -206,13 +223,12 @@ p strong{
 .not-center {
     display: flex;
     flex-direction: column;
-    margin-top: auto;
     text-align: left;
     gap: 5px;
 }
 
 .layout li p {
-    max-width: 25ch;
+    /* max-width: 80%; */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -224,9 +240,11 @@ p strong{
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
     font-weight: 400;
+    font-size: 0.9rem;
     text-transform: uppercase;
     margin: 0px 10px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 header {
@@ -244,12 +262,13 @@ header {
     display: flex;
     justify-content: start;
     gap: 10px;
-    margin-top: auto;
+    margin-top: 10px;
 }
 
 .errors {
     list-style: none;
     color: red;
+    font-size: 1rem;
     margin-top: 10px;
     box-shadow: -2px 0px;
     padding-left: 8px;
