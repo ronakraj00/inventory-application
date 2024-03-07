@@ -8,7 +8,7 @@ block content
   else 
     ul(style="margin:0px;padding:0px",class="collections")
       each collection in allCollections
-        li(style="list-style:none;margin-top:20px;min-width:250px;border-radius:16px" class="card")
+        li(style="list-style:none;margin-top:20px;min-width:250px;border-radius:16px")
           div
             a(href=collection.url,style="font-size:26px")=collection.name 
             p=collection.description
